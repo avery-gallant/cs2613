@@ -10,10 +10,10 @@ class Renter:
 class LongTermRenter(Renter):
     def __init__(self, name, length_of_stay, package):
         super().__init__(name, length_of_stay)
-        self.package = package
+        self.package = int(package)
 
     def calculate_cost(self):
-        base_cost = super.calculate_cost()
+        base_cost = super().calculate_cost()
         if self.package == 1:
             return base_cost*0.70 + 25
         elif self.package == 2:
@@ -24,9 +24,9 @@ class LongTermRenter(Renter):
     def get_info_string(self):
         string = str(self.length_of_stay)+" day stay"
         if self.package == 1:
-            string = string + "(Basic)"
+            string = string + " (Basic)"
         elif self.package == 2:
-            string = string + "(Premium)"
+            string = string + " (Premium)"
         return string
 
 class ShortTermRenter(Renter):
@@ -37,12 +37,14 @@ class ShortTermRenter(Renter):
             self.breakfast = True
 
     def calculate_cost(self):
-        base_cost = super.calculate_cost()
+        base_cost = super().calculate_cost()
         if self.breakfast:
             return base_cost+5.99*self.length_of_stay
+        else:
+            return base_cost
 
     def get_info_string(self):
         string = str(self.length_of_stay)+" day stay"
         if self.breakfast:
-            string = string + "(Breakfast Plan)"
+            string = string + " (Breakfast Plan)"
         return string
