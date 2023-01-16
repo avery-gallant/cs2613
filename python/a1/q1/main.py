@@ -19,14 +19,14 @@ def rent_room():
     length_of_stay = int(input("Number of days staying:\n"))
     if length_of_stay <=14:
         breakfast_plan = input("Would they like to purchase the breakfast plan? (Y/N)\n").lower()
-        renter = ShortTermRenter(name, length_of_stay, breakfast_plan)
+        renter = ShortTermRenter(name, length_of_stay, room_num, breakfast_plan)
     else:
         print("Would they like to purchase an insurance package?")
         print("\t0: No Package")
         print("\t1: Basic Package")
         package = input("\t2: Premium Package\n")
 
-        renter = LongTermRenter(name, length_of_stay, package)
+        renter = LongTermRenter(name, length_of_stay, room_num, package)
     
     renter_dict[room_num] = renter
     print("Cost of stay: " + str(round(renter.calculate_cost(), 2)))

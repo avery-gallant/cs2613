@@ -1,15 +1,16 @@
 
 class Renter:
-    def __init__(self, name, length_of_stay):
+    def __init__(self, name, length_of_stay, room_num):
         self.name = name
         self.length_of_stay = length_of_stay
+        self.room_num = room_num
 
     def calculate_cost(self):
         return 119*self.length_of_stay*1.15
 
 class LongTermRenter(Renter):
-    def __init__(self, name, length_of_stay, package):
-        super().__init__(name, length_of_stay)
+    def __init__(self, name, length_of_stay, room_num, package):
+        super().__init__(name, length_of_stay, room_num)
         self.package = int(package)
 
     def calculate_cost(self):
@@ -30,8 +31,8 @@ class LongTermRenter(Renter):
         return string
 
 class ShortTermRenter(Renter):
-    def __init__(self, name, length_of_stay, breakfast):
-        super().__init__(name, length_of_stay)
+    def __init__(self, name, length_of_stay, room_num, breakfast):
+        super().__init__(name, length_of_stay, room_num)
         self.breakfast = False
         if breakfast == "y":
             self.breakfast = True
